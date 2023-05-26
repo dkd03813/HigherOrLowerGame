@@ -41,3 +41,9 @@ function renderSongs(result) {
   }); {
   };
 }
+
+$(document).ready(function() {
+    $('#carousel').carousel({
+        interval: false
+    });
+});
