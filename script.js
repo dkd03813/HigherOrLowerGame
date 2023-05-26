@@ -1,5 +1,5 @@
 const url =
-  "https://theaudiodb.p.rapidapi.com/track-top10-mb.php?s=20244d07-534f-4eff-b4d4-930878889970";
+  "https://theaudiodb.p.rapidapi.com/track-top10-mb.php?s=20244d07-534f-4eff-b4d4-930878889970"; // after the s, unique identifer for taylor swift in this case. we need to randomize this ID somehow.
 const songDiv = document.getElementById("songDiv");
 const options = {
   method: "GET",
