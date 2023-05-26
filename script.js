@@ -1,20 +1,29 @@
-const url =
-  "https://theaudiodb.p.rapidapi.com/track-top10-mb.php?s=20244d07-534f-4eff-b4d4-930878889970"; // after the s, unique identifer for taylor swift in this case. we need to randomize this ID somehow.
-const songDiv = document.getElementById("songDiv");
+
+const url = 'https://genius-song-lyrics1.p.rapidapi.com/chart/artists/?time_period=all_time&per_page=50&page=1';
+const url2 = 'https://genius-song-lyrics1.p.rapidapi.com/chart/artists/?time_period=all_time&per_page=50&page=2';
+const songDiv = document.getElementById("songDiv")
+=======
+
 const options = {
-  method: "GET",
-  headers: {
-    "X-RapidAPI-Key": "8928d20978msh33c4f2c19c570fep140c43jsnbe4d00944f83",
-    "X-RapidAPI-Host": "theaudiodb.p.rapidapi.com",
-  },
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '8928d20978msh33c4f2c19c570fep140c43jsnbe4d00944f83',
+		'X-RapidAPI-Host': 'genius-song-lyrics1.p.rapidapi.com'
+	}
 };
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   try {
     const response = await fetch(url, options);
-    const result = await response.json();
-    console.log(result);
-    renderSongs(result.track);
+    const response2 = await fetch(url2,options);
+    const result1 = await response.json();
+    const result2 = await response2.json();
+    console.log(result1);
+    console.log(result2);
+    const result = result1.chart_items.concat(result2.chart_items)
+    console.log(result)
+    renderSongs(result);
   } catch (error) {
     console.error(error);
   }
@@ -22,17 +31,17 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderSongs(result) {
   songDiv.innerHTML = "";
-  result.forEach((track) => {
+  result.forEach((chart_items) => {
 	  
 	  const div = document.createElement("div");
 	  div.className = "col";
 
     div.innerHTML = `<div class="movies-container col" id="container">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src=${track.strTrackThumb} alt="Card image cap">
+            <img class="card-img-top" src=${chart_items.item.image_url} alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">${track.strArtist} <span class="badge bg-secondary">${track.strGenre}</span></h5>
-              <a href="#" class="btn btn-primary">${track.strTrack}</a>
+                <h5 class="card-title">${chart_items.item.name} <span class="badge bg-secondary">${chart_items.item.name}</span></h5>
+              <a href="#" class="btn btn-primary">${chart_items.item.name}</a>
             </div>
         </div>`;
   
@@ -42,8 +51,3 @@ function renderSongs(result) {
   };
 }
 
-$(document).ready(function() {
-    $('#carousel').carousel({
-        interval: false
-    });
-});
