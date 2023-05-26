@@ -10,28 +10,49 @@
   <title>Higher or Lower Game</title>
 </head>
 <body>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="https://picsum.photos/200/100" alt="First slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://picsum.photos/200/100" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="https://picsum.photos/200/100" alt="Third slide">
+          </div>
+        </div>
+      </div>
 
-    <div>
-        <h1>Welcome to our Higher or Lower Game</h1>
-        <h3>Rule: "can you select which song is more popular?" or another rule goes here.</h3>
-        <div class="container my-5">
-            <div class="position-relative p-5 text-center text-muted bg-body border border-dashed rounded-5">
-              <button type="button" class="position-absolute top-0 end-0 p-3 m-3 btn-close bg-secondary bg-opacity-10 rounded-pill" aria-label="Close"></button>
-              <svg class="bi mt-5 mb-3" width="48" height="48"><use xlink:href="#check2-circle"></use></svg>
-              <h1 class="text-body-emphasis">Placeholder jumbotron</h1>
-              <p class="col-lg-6 mx-auto mb-4">
-                This faded back jumbotron is useful for placeholder content. It's also a great way to add a bit of context to a page or section when no content is available and to encourage visitors to take a specific action.
-              </p>
-              <a href="game.html"><button class="btn btn-primary px-5 mb-5" type="button">
+    <div class=" mt-5 p-5 text-center rounded-3">
+        <svg class="bi mt-4 mb-3" style="color: var(--bs-indigo); --darkreader-inline-color: var(--darkreader-text--bs-indigo);" width="100" height="100" data-darkreader-inline-color=""><use xlink:href="#bootstrap"></use></svg>
+        <h1 class="text-body-emphasis">Welcome to our Higher or Lower Game</h1>
+        <p class="col-lg-8 mx-auto fs-5 text-muted">
+            Rule: "can you select which song is more popular?" or another rule goes here.
+        </p>
+        <div class="d-inline-flex gap-2 mb-5">
+            <a href="game.html"><button class="btn btn-primary px-5 mb-5" type="button">
                 Call to action
               </button></a>
+        </div>
+    </div>
+
+        <div id="carousel" class="carousel slide" data-ride="carousel" data-interval="1">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="d-block w-100" src="https://picsum.photos/200/100" alt="First slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://picsum.photos/200/100" alt="Second slide">
+              </div>
+              <div class="carousel-item">
+                <img class="d-block w-100" src="https://picsum.photos/200/100" alt="Third slide">
+              </div>
             </div>
           </div>
+    
 
-    </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <script></script>
-
     <script src="data.js"></script>
 </body>
 </html>
