@@ -27,9 +27,26 @@
         </div>
       </nav>
       <!-- nav bar code ends here -->
+
       <!--  jumbotron heading starts here -->
       <section class="jumbotron text-center">
-        <div class="container">
+        <div id="gameSelect">
+            <h1 class="jumbotron-heading"><em>Choose Your Game!</em> <br></h1>
+          <p class="lead text-muted">Select Which Category You Want to Play:</p>
+        <div class="row">
+            <div class="dropdown col" id="firstChoice">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Choose Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="choices">
+                <a class="dropdown-item" id="artist" href="#">Artist</a>
+                <a class="dropdown-item" id="album" href="#">Album</a>
+                <a class="dropdown-item" id="song" href="#">Song</a>
+                </div>
+                </div>
+        </div>
+        </div>
+        <div class="container d-none">
           <h1 class="jumbotron-heading"><em>Ready... set... go!</em> <br> Make your choice!</h1>
           <p class="lead text-muted">Which is more popular?</p>
           <p>
@@ -43,6 +60,9 @@
 <!-- Bootstrap container to popuate with two choices, starts here -->
 <div class="container">
 <!-- Bootstrap cards begin here -->
+
+     <div class="card" style="width: 18rem;" id="songDiv">
+
 <!-- this div tag with class row is to display them in line + col-6 class below --> 
 <div class="row">
      <div class="col-6 card" style="width: 18rem;">
