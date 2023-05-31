@@ -55,15 +55,20 @@ function renderSongs(result) {
 
 firstChoice.addEventListener("click", async (e) => {
   e.preventDefault();
+
+//Declare the three variables that will hold the values of the button presses.  Eventually these will be used in the URL using template literals
+
   let par1 = "";
   let par2 = "";
   let par3 = "all";
   if (e.target.innerHTML == "Artist") {
     par1 = "artists";
     firstChoice.innerHTML = "";
-    // const secondChoice = document.createElement("div");
+    
+//Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
+
     secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -74,13 +79,16 @@ firstChoice.addEventListener("click", async (e) => {
 </div>
 </div>`;
     firstChoice.appendChild(secondChoice);
+
   } else if (e.target.innerHTML == "Song") {
     par1 = "songs";
     console.log(par1);
     firstChoice.innerHTML = "";
-    // const secondChoice = document.createElement("div");
+    
+//Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
+
     secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -95,9 +103,11 @@ firstChoice.addEventListener("click", async (e) => {
     par1 = "albums";
     console.log(par1);
     firstChoice.innerHTML = "";
-    // const secondChoice = document.createElement("div");
+    
+//Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
+
     secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -110,16 +120,21 @@ firstChoice.addEventListener("click", async (e) => {
     firstChoice.appendChild(secondChoice);
   }
 
+//Event listener on the second button that is created by the first event listener
+
   secondChoice.addEventListener("click", async (e) => {
     if (e.target.innerHTML == "Day") {
       par2 = "day";
       console.log = par2
       secondChoice.innerHTML = "";
+
+//If the first selection (firstChoice) is song, then and only then will we have a button that allows for the selection of genre.  Else dont display the third button and begin the game as normal
+    
       if (par1 == "songs") {
         console.log("hello");
 
         thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -142,7 +157,7 @@ firstChoice.addEventListener("click", async (e) => {
       if (par1 == "songs") {
 
         thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -165,7 +180,7 @@ firstChoice.addEventListener("click", async (e) => {
         console.log("hello");
 
         thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -186,7 +201,7 @@ firstChoice.addEventListener("click", async (e) => {
         console.log("hello");
 
         thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
