@@ -211,23 +211,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (par1 == "songs") {
         thirdChoice.addEventListener("click", async (e) => {
           if (e.target.innerHTML == "Rap") {
-            par1 = ""
+           
             par3 = "rap";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Pop") {
-            par1 = ""
+            
             par3 = "pop";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "R&B") {
-            par1 = ""
+           
             par3 = "rb";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Rock") {
-            par1 = ""
+            
             par3 = "rock";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Country") {
-            par1 = ""
+            
             par3 = "country";
             firstChoice.innerHTML = "";
           }
