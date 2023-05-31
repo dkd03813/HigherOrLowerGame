@@ -10,26 +10,13 @@ const songDiv = document.getElementById("songDiv");
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "8928d20978msh33c4f2c19c570fep140c43jsnbe4d00944f83",
+    "X-RapidAPI-Key": "8928d20978msh33c4f2c19c570fep140c43jsnbe4d00944f83" || 'bba7b0e8a5msh7f832a3ef425a5ap1f4e49jsn2808d3bd1718' || '5c2e7e0d69msh7ac874ce7dd8ee3p1293bdjsn3b30f0711101',
     "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
   },
 };
 
 document.addEventListener("DOMContentLoaded", async () => {
-  try {
-    const response = await fetch(url, options);
-    const response2 = await fetch(url2, options);
-    const result1 = await response.json();
-    const result2 = await response2.json();
-    //console.log(result1);
-    //console.log(result2);
-    const result = result1.chart_items.concat(result2.chart_items);
-    //console.log(result)
-    //renderSongs(result);
-  } catch (error) {
-    console.error(error);
-  }
-
+  
   function assignPopularity (result) {
     result.forEach((chart_items) => {
       chart_items.item.rank = result.indexOf(chart_items);
