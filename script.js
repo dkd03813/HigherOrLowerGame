@@ -29,21 +29,18 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderSongs(result) {
-    songDiv.innerHTML = "";
+    // songDiv.innerHTML = "";
     result.forEach((chart_items) => {
       const div = document.createElement("div");
-      div.className = "col";
-
-      div.innerHTML = `<div class="movies-container col" id="container">
+      div.innerHTML = `
       <div class="card" style="width: 18rem;">
       <img class="card-img-top" src=${chart_items.item.header_image_url || chart_items.item.cover_art_thumbnail_url || chart_items.item.header_image_thumbnail_url} alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">${chart_items.item.name || chart_items.item.full_title || chart_items.item.full_title}
       <a href="#" class="btn btn-primary">${chart_items.item.rank}</a>
-      </div>
       </div>`;
-
-      songDiv.appendChild(div);
+      firstChoice.className = "d-none"
+      gameZone.appendChild(div);
     });
     {
     }
@@ -66,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       //Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
 
       secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -85,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       //Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
 
       secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -104,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       //Once someone makes a valid selection, clear firstChoice and inject a second button onto the dom to allow for selecting time period
 
       secondChoice.innerHTML = `<div class="dropdown col" id="secondChoice">
-<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Choose Time Period
 </button>
 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -131,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.log("hello");
 
           thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -152,7 +149,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         secondChoice.innerHTML = "";
         if (par1 == "songs") {
           thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -174,7 +171,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.log("hello");
 
           thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -195,7 +192,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           console.log("hello");
 
           thirdChoice.innerHTML = `<div class="dropdown col" id="thirdChoice">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Choose Song Genre
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -214,18 +211,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (par1 == "songs") {
         thirdChoice.addEventListener("click", async (e) => {
           if (e.target.innerHTML == "Rap") {
+            par1 = ""
             par3 = "rap";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Pop") {
+            par1 = ""
             par3 = "pop";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "R&B") {
+            par1 = ""
             par3 = "rb";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Rock") {
+            par1 = ""
             par3 = "rock";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Country") {
+            par1 = ""
             par3 = "country";
             firstChoice.innerHTML = "";
           }
@@ -237,8 +239,23 @@ document.addEventListener("DOMContentLoaded", async () => {
             const response2 = await fetch(url2, options);
             const result1 = await response.json();
             const result2 = await response2.json();
-            console.log(result1);
-            console.log(result2);
+            const result = result1.chart_items.concat(result2.chart_items);
+            console.log(result);
+            assignPopularity(result);
+            let randResult = randomizeArr(result,1)
+            renderSongs(randResult);
+          } catch (error) {
+            console.error(error);
+          }
+        });
+        } else if (par1 != "songs"){
+          const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=1`;
+          const url2 = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=2`;
+          try {
+            const response = await fetch(url, options);
+            const response2 = await fetch(url2, options);
+            const result1 = await response.json();
+            const result2 = await response2.json();
             const result = result1.chart_items.concat(result2.chart_items);
             console.log(result);
             assignPopularity(result);
@@ -247,26 +264,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           } catch (error) {
             console.error(error);
           }
-        });
-      } else {
-        const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=1`;
-          const url2 = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=2`;
-        try {
-          const response = await fetch(url, options);
-          const response2 = await fetch(url2, options);
-          const result1 = await response.json();
-          const result2 = await response2.json();
-          console.log(result1);
-          console.log(result2);
-          const result = result1.chart_items.concat(result2.chart_items);
-          console.log(result);
-          assignPopularity(result);
-          let randResult = randomizeArr(result,2)
-          renderSongs(randResult);
-        } catch (error) {
-          console.error(error);
         }
-      }
+      });
     });
   });
-});
