@@ -10,7 +10,7 @@
 </head>
 <body>
 <!-- nav bar code begins here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.html"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
         </svg> 
@@ -35,11 +35,23 @@
       <!--  jumbotron heading starts here -->
       <section class="jumbotron text-center">
         <div id="gameSelect">
+
+          <br>
+          <br>
+            <h1 class="jumbotron-heading display-4"><em>Choose your game.</em></h1>
+            <br>
+            <br>
+            <h4>Select which category you want to play:</h4>
+          <p class="lead text-dark"></p>
+
+        <div class="row">
+
             <h1 class="jumbotron-heading"><em>Choose Your Game!</em> <br></h1>
           <p class="lead text-dark">Select Which Category You Want to Play:</p>
         <div class="row" id="gameZone">
+
             <div class="dropdown col" id="firstChoice">
-                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Choose Category
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -75,7 +87,7 @@
         </div>
         <div class="container d-none">
           <h1 class="jumbotron-heading"><em>Ready... set... go!</em> <br> Make your choice!</h1>
-          <p class="lead text-muted">Which is more popular?</p>
+          <p class="lead text-dark">Which is more popular?</p>
           <p>
             <a href="#" class="btn btn-primary my-2">Choice 1</a>
             <a href="#" class="btn btn-secondary my-2">Choice 2</a>
