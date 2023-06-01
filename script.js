@@ -1,3 +1,5 @@
+console.log(openAI)
+
 const firstChoice = document.getElementById("firstChoice");
 const secondChoice = document.createElement("div");
 const thirdChoice = document.createElement("div");
@@ -10,7 +12,7 @@ const songDiv = document.getElementById("songDiv");
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "8928d20978msh33c4f2c19c570fep140c43jsnbe4d00944f83" || 'bba7b0e8a5msh7f832a3ef425a5ap1f4e49jsn2808d3bd1718' || '5c2e7e0d69msh7ac874ce7dd8ee3p1293bdjsn3b30f0711101',
+    "X-RapidAPI-Key": `${openAI}`,
     "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
   },
 };
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   function renderSongs(result) {
-    // songDiv.innerHTML = "";
+    gameZone.innerHTML = "";
     result.forEach((chart_items) => {
       const div = document.createElement("div");
       div.innerHTML = `
@@ -37,7 +39,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       <img class="card-img-top" src=${chart_items.item.header_image_url || chart_items.item.cover_art_thumbnail_url || chart_items.item.header_image_thumbnail_url} alt="Card image cap">
       <div class="card-body">
       <h5 class="card-title">${chart_items.item.name || chart_items.item.full_title || chart_items.item.full_title}
-      <a href="#" class="btn btn-primary">${chart_items.item.rank}</a>
+      <a href="#" class="btn btn-primary" id="${chart_items.item.rank}">${chart_items.item.rank}</a>
       </div>`;
       firstChoice.className = "d-none"
       gameZone.appendChild(div);
@@ -211,29 +213,32 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (par1 == "songs") {
         thirdChoice.addEventListener("click", async (e) => {
           if (e.target.innerHTML == "Rap") {
-            par1 = ""
+           
             par3 = "rap";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Pop") {
-            par1 = ""
+            
             par3 = "pop";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "R&B") {
-            par1 = ""
+           
             par3 = "rb";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Rock") {
-            par1 = ""
+            
             par3 = "rock";
             firstChoice.innerHTML = "";
           } else if (e.target.innerHTML == "Country") {
-            par1 = ""
+            
             par3 = "country";
             firstChoice.innerHTML = "";
           }
 
           const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=1`;
           const url2 = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=2`;
+
+          //par1 = "";
+
           try {
             const response = await fetch(url, options);
             const response2 = await fetch(url2, options);
@@ -242,15 +247,15 @@ document.addEventListener("DOMContentLoaded", async () => {
             const result = result1.chart_items.concat(result2.chart_items);
             console.log(result);
             assignPopularity(result);
-            let randResult = randomizeArr(result,1)
+            let randResult = randomizeArr(result,2)
             renderSongs(randResult);
           } catch (error) {
             console.error(error);
           }
         });
         } else if (par1 != "songs"){
-          const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=1`;
-          const url2 = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&chart_genre=${par3}&per_page=50&page=2`;
+          const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&per_page=50&page=1`;
+          const url2 = `https://genius-song-lyrics1.p.rapidapi.com/chart/${par1}/?time_period=${par2}&per_page=50&page=2`;
           try {
             const response = await fetch(url, options);
             const response2 = await fetch(url2, options);
