@@ -1,8 +1,16 @@
 .container {
-    margin: 20px;
-
+  margin: 20px;
 }
 
 .row {
-    padding: 50px;
+  padding: 50px;
+}
+
+.index-page {
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+
+.game-page {
+  background-color: whitesmoke;
 }
