@@ -1,4 +1,4 @@
-// console.log(openAI);
+console.log(openAI);
 
 const firstChoice = document.getElementById("firstChoice");
 const secondChoice = document.createElement("div");
@@ -21,7 +21,7 @@ const songDiv = document.getElementById("songDiv");
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "785fa3d228mshd6d2a565906a4fdp1197a9jsnb4db8e5eb119",
+    "X-RapidAPI-Key": `${openAI}`,
     "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
   },
 };
@@ -48,7 +48,7 @@ function renderSong1(result) {
     console.log(chart_items);
     div.id = `${chart_items.item.rank}`;
     div.innerHTML = `
-      <div class="card" style="width: 18rem;">
+      <div class="card bg-dark" style="width: 18rem;">
       <img class="card-img-top" src=${
         chart_items.item.header_image_url ||
         chart_items.item.cover_art_thumbnail_url ||
@@ -60,9 +60,7 @@ function renderSong1(result) {
         chart_items.item.full_title ||
         chart_items.item.full_title
       }
-      <a href="#" class="btn btn-primary" id="${chart_items.item.rank}">${
-      chart_items.item.rank
-    }</a>
+  
       </div>`;
     firstChoice.className = "d-none";
     gameZone.appendChild(div);
@@ -73,7 +71,7 @@ function renderSong2(result) {
     //console.log(chart_items);
     div2.id = `${chart_items.item.rank}`;
     div2.innerHTML = `
-      <div class="card" style="width: 18rem;">
+      <div class="card bg-dark" style="width: 18rem;">
       <img class="card-img-top" src=${
         chart_items.item.header_image_url ||
         chart_items.item.cover_art_thumbnail_url ||
@@ -85,9 +83,6 @@ function renderSong2(result) {
         chart_items.item.full_title ||
         chart_items.item.full_title
       }
-      <a href="#" class="btn btn-primary" id="${chart_items.item.rank}">${
-      chart_items.item.rank
-    }</a>
       </div>`;
     gameZone.appendChild(div2);
   });
@@ -314,7 +309,7 @@ firstChoice.addEventListener("click", async (e) => {
       document.querySelector(".player1").addEventListener("click", (e) => {
         e.preventDefault();
         document.getElementById("highscore").innerHTML = counter;
-        if (div.id <= div2.id) {
+        if (Number(div.id) <= Number(div2.id)) {
           console.log("you win");
           counter++;
           document.getElementById("highscore").innerHTML = counter;
@@ -333,7 +328,7 @@ firstChoice.addEventListener("click", async (e) => {
       document.querySelector(".player2").addEventListener("click", (e) => {
         e.preventDefault();
         document.getElementById("highscore").innerHTML = counter;
-        if (div2.id <= div.id) {
+        if (Number(div2.id) <= Number(div.id)) {
           console.log("you win");
           counter++;
           document.getElementById("highscore").innerHTML = counter;

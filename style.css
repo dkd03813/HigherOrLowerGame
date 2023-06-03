@@ -15,10 +15,10 @@
   background-color: whitesmoke;
 }
 
-.end-page {
+/* .end-page {
   background-color: black;
   color: white;
-}
+} */
 
 .game-page {
   background-color: rgb(30, 30, 30);
@@ -27,5 +27,17 @@
 
 .jumbotron {
   background-color: rgb(30, 30, 30);
-  color: black;
+  color: rgb(255, 255, 255);
+}
+
+.dropdown-item:hover {
+  background-color: rgb(127, 117, 117);
+}
+
+.dropdown-menu {
+  color: white;
+  background-color: rgb(33, 37, 41)
+}
+.dropdown-item {
+  color: white;
 }
