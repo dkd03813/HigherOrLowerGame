@@ -4,6 +4,12 @@ const firstChoice = document.getElementById("firstChoice");
 const secondChoice = document.createElement("div");
 const thirdChoice = document.createElement("div");
 const gameZone = document.getElementById("gameZone");
+const preGame = document.getElementById("preGame")
+const inGame = document.getElementById("inGame")
+let div = document.createElement("div");
+div.className = "player1";
+let div2 = document.createElement("div");
+div2.className = "player2";
 console.dir(gameZone);
 const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/artists/?time_period=all_time&per_page=50&page=1`;
 const url2 =
@@ -13,11 +19,16 @@ const songDiv = document.getElementById("songDiv");
 const options = {
   method: "GET",
   headers: {
-    "X-RapidAPI-Key": "bba7b0e8a5msh7f832a3ef425a5ap1f4e49jsn2808d3bd1718",
+    "X-RapidAPI-Key": "785fa3d228mshd6d2a565906a4fdp1197a9jsnb4db8e5eb119",
     "X-RapidAPI-Host": "genius-song-lyrics1.p.rapidapi.com",
   },
 };
 console.log(options);
+
+function gameStart () {
+  preGame.className = "d-none"
+  inGame.className = ""
+}
 
 function assignPopularity(result) {
   result.forEach((chart_items) => {
@@ -30,17 +41,11 @@ function randomizeArr(arr, num) {
   return shuffledArr.slice(0, num);
 }
 
-function renderSongs(result) {
-  //gameZone.innerHTML = "";
-  if (
-    gameZone.classList.value ==
-    "card-deck align-items-center justify-content-center"
-  ) {
-  } else {
-    result.forEach((chart_items) => {
-      console.log(chart_items);
-      const div = document.createElement("div");
-      div.innerHTML = `
+function renderSong1(result) {
+  result.forEach((chart_items) => {
+    console.log(chart_items);
+    div.id = `${chart_items.item.rank}`;
+    div.innerHTML = `
       <div class="card" style="width: 18rem;">
       <img class="card-img-top" src=${
         chart_items.item.header_image_url ||
@@ -54,13 +59,36 @@ function renderSongs(result) {
         chart_items.item.full_title
       }
       <a href="#" class="btn btn-primary" id="${chart_items.item.rank}">${
-        chart_items.item.rank
-      }</a>
+      chart_items.item.rank
+    }</a>
       </div>`;
-      firstChoice.className = "d-none";
-      gameZone.appendChild(div);
-    });
-  }
+    firstChoice.className = "d-none";
+    gameZone.appendChild(div);
+  });
+}
+function renderSong2(result) {
+  result.forEach((chart_items) => {
+    //console.log(chart_items);
+    div2.id = `${chart_items.item.rank}`;
+    div2.innerHTML = `
+      <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src=${
+        chart_items.item.header_image_url ||
+        chart_items.item.cover_art_thumbnail_url ||
+        chart_items.item.header_image_thumbnail_url
+      } alt="Card image cap">
+      <div class="card-body">
+      <h5 class="card-title">${
+        chart_items.item.name ||
+        chart_items.item.full_title ||
+        chart_items.item.full_title
+      }
+      <a href="#" class="btn btn-primary" id="${chart_items.item.rank}">${
+      chart_items.item.rank
+    }</a>
+      </div>`;
+    gameZone.appendChild(div2);
+  });
 }
 
 //This block of code allows the user to filter the game down to play the version they would like
@@ -134,6 +162,7 @@ firstChoice.addEventListener("click", async (e) => {
   //Event listener on the second button that is created by the first event listener
 
   secondChoice.addEventListener("click", async (e) => {
+    e.preventDefault();
     if (e.target.innerHTML == "Day") {
       par2 = "day";
       console.log = par2;
@@ -226,6 +255,7 @@ firstChoice.addEventListener("click", async (e) => {
 
     if (par1 == "songs") {
       thirdChoice.addEventListener("click", async (e) => {
+        e.preventDefault();
         if (e.target.innerHTML == "Rap") {
           par3 = "rap";
           firstChoice.innerHTML = "";
@@ -274,8 +304,36 @@ firstChoice.addEventListener("click", async (e) => {
         const result = result1.chart_items.concat(result2.chart_items);
         console.log(result);
         assignPopularity(result);
-        let randResult = randomizeArr(result, 2);
-        renderSongs(randResult);
+        let randResult1 = randomizeArr(result, 1);
+        let randResult2 = randomizeArr(result, 1);
+        renderSong1(randResult1);
+        renderSong2(randResult2);
+        gameStart();
+
+        document.querySelector(".player1").addEventListener("click", (e) => {
+          e.preventDefault();
+          if (div.id < document.querySelector(".player2").id) {
+            console.log("you win");
+            let randResult1 = randomizeArr(result, 1);
+            let randResult2 = randomizeArr(result, 1);
+            renderSong1(randResult1);
+            renderSong2(randResult2);
+          } else {
+            console.log("you lose");
+          }
+        });
+        document.querySelector(".player2").addEventListener("click", (e) => {
+          e.preventDefault();
+          if (div2.id < document.querySelector(".player1").id) {
+            console.log("you win");
+            let randResult1 = randomizeArr(result, 1);
+            let randResult2 = randomizeArr(result, 1);
+            renderSong1(randResult1);
+            renderSong2(randResult2);
+          } else {
+            console.log("you lose");
+          }
+        });
       } catch (error) {
         console.error(error);
       }
