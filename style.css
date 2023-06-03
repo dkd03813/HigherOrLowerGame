@@ -19,3 +19,13 @@
   background-color: black;
   color: white;
 }
+
+.game-page {
+  background-color: rgb(30, 30, 30);
+  color: white;
+}
+
+.jumbotron {
+  background-color: rgb(30, 30, 30);
+  color: rgb(0, 0, 0);
+}
