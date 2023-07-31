@@ -1,3 +1,4 @@
+
 document.getElementById("finalScore").innerHTML =
             localStorage.getItem("counter");
 

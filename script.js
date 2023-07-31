@@ -15,7 +15,7 @@ div2.className = "player2";
 console.dir(gameZone);
 // const url = `https://genius-song-lyrics1.p.rapidapi.com/chart/artists/?time_period=all_time&per_page=50&page=1`;
 // const url2 =
-//   "https://genius-song-lyrics1.p.rapidapi.com/chart/songs/?time_period=all_time&per_page=50&page=2";
+//   "https://genius-song-lyrics1.p.rapidapi.com/chart/songs/?time_period=all_time&per_page=50&page=2" ;
 const songDiv = document.getElementById("songDiv");
 
 const options = {
