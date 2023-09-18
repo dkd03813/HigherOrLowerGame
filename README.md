@@ -34,6 +34,6 @@ Tune Tycoon invites players to immerse themselves in the world of music and chal
 * LinkedIn: [Damian Diaz](https://www.linkedin.com/in/damian-diaz-97578121a/)
 * Portfolio: [Damian's Portfolio](https://damians-portfoiio-site.onrender.com)
 
-- Erica Betting
+- Erica Bitting
 * GitHub: [@erica-b](https://github.com/erica-b)
-* LinkedIn: [Erica Betting](https://www.linkedin.com/in/erica-linked/)
+* LinkedIn: [Erica Bitting](https://www.linkedin.com/in/erica-linked/)
